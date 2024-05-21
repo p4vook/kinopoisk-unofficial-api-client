@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class PersonByNameResponseItemsSex(str, Enum):
+class PersonByNameResponseItemsSexType2Type1(str, Enum):
     FEMALE = "FEMALE"
     MALE = "MALE"
     UNKNOWN = "UNKNOWN"

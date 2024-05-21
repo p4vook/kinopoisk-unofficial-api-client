@@ -17,8 +17,10 @@ from .digital_release_response import DigitalReleaseResponse
 from .distribution import Distribution
 from .distribution_country import DistributionCountry
 from .distribution_response import DistributionResponse
-from .distribution_sub_type import DistributionSubType
-from .distribution_type import DistributionType
+from .distribution_sub_type_type_1 import DistributionSubTypeType1
+from .distribution_sub_type_type_2_type_1 import DistributionSubTypeType2Type1
+from .distribution_sub_type_type_3_type_1 import DistributionSubTypeType3Type1
+from .distribution_type_type_1 import DistributionTypeType1
 from .episode import Episode
 from .external_source_response import ExternalSourceResponse
 from .external_source_response_items import ExternalSourceResponseItems
@@ -29,7 +31,9 @@ from .film import Film
 from .film_collection_response import FilmCollectionResponse
 from .film_collection_response_items import FilmCollectionResponseItems
 from .film_collection_response_items_type import FilmCollectionResponseItemsType
-from .film_production_status import FilmProductionStatus
+from .film_production_status_type_1 import FilmProductionStatusType1
+from .film_production_status_type_2_type_1 import FilmProductionStatusType2Type1
+from .film_production_status_type_3_type_1 import FilmProductionStatusType3Type1
 from .film_search_by_filters_response import FilmSearchByFiltersResponse
 from .film_search_by_filters_response_items import FilmSearchByFiltersResponseItems
 from .film_search_by_filters_response_items_type import FilmSearchByFiltersResponseItemsType
@@ -59,11 +63,15 @@ from .media_posts_response import MediaPostsResponse
 from .media_posts_response_items import MediaPostsResponseItems
 from .person_by_name_response import PersonByNameResponse
 from .person_by_name_response_items import PersonByNameResponseItems
-from .person_by_name_response_items_sex import PersonByNameResponseItemsSex
+from .person_by_name_response_items_sex_type_1 import PersonByNameResponseItemsSexType1
+from .person_by_name_response_items_sex_type_2_type_1 import PersonByNameResponseItemsSexType2Type1
+from .person_by_name_response_items_sex_type_3_type_1 import PersonByNameResponseItemsSexType3Type1
 from .person_response import PersonResponse
 from .person_response_films import PersonResponseFilms
 from .person_response_films_profession_key import PersonResponseFilmsProfessionKey
-from .person_response_sex import PersonResponseSex
+from .person_response_sex_type_1 import PersonResponseSexType1
+from .person_response_sex_type_2_type_1 import PersonResponseSexType2Type1
+from .person_response_sex_type_3_type_1 import PersonResponseSexType3Type1
 from .person_response_spouses import PersonResponseSpouses
 from .person_response_spouses_sex import PersonResponseSpousesSex
 from .premiere_response import PremiereResponse
@@ -100,8 +108,10 @@ __all__ = (
     "Distribution",
     "DistributionCountry",
     "DistributionResponse",
-    "DistributionSubType",
-    "DistributionType",
+    "DistributionSubTypeType1",
+    "DistributionSubTypeType2Type1",
+    "DistributionSubTypeType3Type1",
+    "DistributionTypeType1",
     "Episode",
     "ExternalSourceResponse",
     "ExternalSourceResponseItems",
@@ -112,7 +122,9 @@ __all__ = (
     "FilmCollectionResponse",
     "FilmCollectionResponseItems",
     "FilmCollectionResponseItemsType",
-    "FilmProductionStatus",
+    "FilmProductionStatusType1",
+    "FilmProductionStatusType2Type1",
+    "FilmProductionStatusType3Type1",
     "FilmSearchByFiltersResponse",
     "FilmSearchByFiltersResponseItems",
     "FilmSearchByFiltersResponseItemsType",
@@ -142,11 +154,15 @@ __all__ = (
     "MediaPostsResponseItems",
     "PersonByNameResponse",
     "PersonByNameResponseItems",
-    "PersonByNameResponseItemsSex",
+    "PersonByNameResponseItemsSexType1",
+    "PersonByNameResponseItemsSexType2Type1",
+    "PersonByNameResponseItemsSexType3Type1",
     "PersonResponse",
     "PersonResponseFilms",
     "PersonResponseFilmsProfessionKey",
-    "PersonResponseSex",
+    "PersonResponseSexType1",
+    "PersonResponseSexType2Type1",
+    "PersonResponseSexType3Type1",
     "PersonResponseSpouses",
     "PersonResponseSpousesSex",
     "PremiereResponse",

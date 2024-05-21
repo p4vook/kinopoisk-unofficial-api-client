@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class DistributionType(str, Enum):
+class DistributionTypeType1(str, Enum):
     ALL = "ALL"
     COUNTRY_SPECIFIC = "COUNTRY_SPECIFIC"
     LOCAL = "LOCAL"

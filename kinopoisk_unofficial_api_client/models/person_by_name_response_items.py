@@ -3,7 +3,9 @@ from typing import Any, Dict, List, Type, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.person_by_name_response_items_sex import PersonByNameResponseItemsSex
+from ..models.person_by_name_response_items_sex_type_1 import PersonByNameResponseItemsSexType1
+from ..models.person_by_name_response_items_sex_type_2_type_1 import PersonByNameResponseItemsSexType2Type1
+from ..models.person_by_name_response_items_sex_type_3_type_1 import PersonByNameResponseItemsSexType3Type1
 from ..types import UNSET, Unset
 
 T = TypeVar("T", bound="PersonByNameResponseItems")
@@ -17,7 +19,8 @@ class PersonByNameResponseItems:
         web_url (Union[Unset, str]):  Example: 10096.
         name_ru (Union[None, Unset, str]):  Example: Винс Гиллиган.
         name_en (Union[None, Unset, str]):  Example: Vince Gilligan.
-        sex (Union[Unset, PersonByNameResponseItemsSex]):  Example: MALE.
+        sex (Union[None, PersonByNameResponseItemsSexType1, PersonByNameResponseItemsSexType2Type1,
+            PersonByNameResponseItemsSexType3Type1, Unset]):  Example: MALE.
         poster_url (Union[Unset, str]):  Example: https://kinopoiskapiunofficial.tech/images/actor_posters/kp/10096.jpg.
     """
 
@@ -25,7 +28,13 @@ class PersonByNameResponseItems:
     web_url: Union[Unset, str] = UNSET
     name_ru: Union[None, Unset, str] = UNSET
     name_en: Union[None, Unset, str] = UNSET
-    sex: Union[Unset, PersonByNameResponseItemsSex] = UNSET
+    sex: Union[
+        None,
+        PersonByNameResponseItemsSexType1,
+        PersonByNameResponseItemsSexType2Type1,
+        PersonByNameResponseItemsSexType3Type1,
+        Unset,
+    ] = UNSET
     poster_url: Union[Unset, str] = UNSET
     additional_properties: Dict[str, Any] = _attrs_field(init=False, factory=dict)
 
@@ -46,9 +55,17 @@ class PersonByNameResponseItems:
         else:
             name_en = self.name_en
 
-        sex: Union[Unset, str] = UNSET
-        if not isinstance(self.sex, Unset):
+        sex: Union[None, Unset, str]
+        if isinstance(self.sex, Unset):
+            sex = UNSET
+        elif isinstance(self.sex, PersonByNameResponseItemsSexType1):
             sex = self.sex.value
+        elif isinstance(self.sex, PersonByNameResponseItemsSexType2Type1):
+            sex = self.sex.value
+        elif isinstance(self.sex, PersonByNameResponseItemsSexType3Type1):
+            sex = self.sex.value
+        else:
+            sex = self.sex
 
         poster_url = self.poster_url
 
@@ -95,12 +112,55 @@ class PersonByNameResponseItems:
 
         name_en = _parse_name_en(d.pop("nameEn", UNSET))
 
-        _sex = d.pop("sex", UNSET)
-        sex: Union[Unset, PersonByNameResponseItemsSex]
-        if isinstance(_sex, Unset):
-            sex = UNSET
-        else:
-            sex = PersonByNameResponseItemsSex(_sex)
+        def _parse_sex(
+            data: object,
+        ) -> Union[
+            None,
+            PersonByNameResponseItemsSexType1,
+            PersonByNameResponseItemsSexType2Type1,
+            PersonByNameResponseItemsSexType3Type1,
+            Unset,
+        ]:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                sex_type_1 = PersonByNameResponseItemsSexType1(data)
+
+                return sex_type_1
+            except:  # noqa: E722
+                pass
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                sex_type_2_type_1 = PersonByNameResponseItemsSexType2Type1(data)
+
+                return sex_type_2_type_1
+            except:  # noqa: E722
+                pass
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                sex_type_3_type_1 = PersonByNameResponseItemsSexType3Type1(data)
+
+                return sex_type_3_type_1
+            except:  # noqa: E722
+                pass
+            return cast(
+                Union[
+                    None,
+                    PersonByNameResponseItemsSexType1,
+                    PersonByNameResponseItemsSexType2Type1,
+                    PersonByNameResponseItemsSexType3Type1,
+                    Unset,
+                ],
+                data,
+            )
+
+        sex = _parse_sex(d.pop("sex", UNSET))
 
         poster_url = d.pop("posterUrl", UNSET)
 

@@ -3,7 +3,9 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.film_production_status import FilmProductionStatus
+from ..models.film_production_status_type_1 import FilmProductionStatusType1
+from ..models.film_production_status_type_2_type_1 import FilmProductionStatusType2Type1
+from ..models.film_production_status_type_3_type_1 import FilmProductionStatusType3Type1
 from ..models.film_type import FilmType
 from ..types import UNSET, Unset
 
@@ -53,7 +55,8 @@ class Film:
             доказавший, что зрелищное кино может быть умным.
         editor_annotation (Union[None, str]):  Example: Фильм доступен только на языке оригинала с русскими субтитрами.
         is_tickets_available (bool):
-        production_status (FilmProductionStatus):  Example: POST_PRODUCTION.
+        production_status (Union[FilmProductionStatusType1, FilmProductionStatusType2Type1,
+            FilmProductionStatusType3Type1, None]):  Example: POST_PRODUCTION.
         type (FilmType):  Example: FILM.
         rating_mpaa (Union[None, str]):  Example: r.
         rating_age_limits (Union[None, str]):  Example: age16.
@@ -100,7 +103,9 @@ class Film:
     short_description: Union[None, str]
     editor_annotation: Union[None, str]
     is_tickets_available: bool
-    production_status: FilmProductionStatus
+    production_status: Union[
+        FilmProductionStatusType1, FilmProductionStatusType2Type1, FilmProductionStatusType3Type1, None
+    ]
     type: FilmType
     rating_mpaa: Union[None, str]
     rating_age_limits: Union[None, str]
@@ -204,7 +209,15 @@ class Film:
 
         is_tickets_available = self.is_tickets_available
 
-        production_status = self.production_status.value
+        production_status: Union[None, str]
+        if isinstance(self.production_status, FilmProductionStatusType1):
+            production_status = self.production_status.value
+        elif isinstance(self.production_status, FilmProductionStatusType2Type1):
+            production_status = self.production_status.value
+        elif isinstance(self.production_status, FilmProductionStatusType3Type1):
+            production_status = self.production_status.value
+        else:
+            production_status = self.production_status
 
         type = self.type.value
 
@@ -506,7 +519,41 @@ class Film:
 
         is_tickets_available = d.pop("isTicketsAvailable")
 
-        production_status = FilmProductionStatus(d.pop("productionStatus"))
+        def _parse_production_status(
+            data: object,
+        ) -> Union[FilmProductionStatusType1, FilmProductionStatusType2Type1, FilmProductionStatusType3Type1, None]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                production_status_type_1 = FilmProductionStatusType1(data)
+
+                return production_status_type_1
+            except:  # noqa: E722
+                pass
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                production_status_type_2_type_1 = FilmProductionStatusType2Type1(data)
+
+                return production_status_type_2_type_1
+            except:  # noqa: E722
+                pass
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                production_status_type_3_type_1 = FilmProductionStatusType3Type1(data)
+
+                return production_status_type_3_type_1
+            except:  # noqa: E722
+                pass
+            return cast(
+                Union[FilmProductionStatusType1, FilmProductionStatusType2Type1, FilmProductionStatusType3Type1, None],
+                data,
+            )
+
+        production_status = _parse_production_status(d.pop("productionStatus"))
 
         type = FilmType(d.pop("type"))
 

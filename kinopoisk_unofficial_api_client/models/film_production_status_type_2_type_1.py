@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class FilmProductionStatus(str, Enum):
+class FilmProductionStatusType2Type1(str, Enum):
     ANNOUNCED = "ANNOUNCED"
     COMPLETED = "COMPLETED"
     FILMING = "FILMING"

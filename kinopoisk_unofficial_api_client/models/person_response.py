@@ -3,7 +3,9 @@ from typing import TYPE_CHECKING, Any, Dict, List, Type, TypeVar, Union, cast
 from attrs import define as _attrs_define
 from attrs import field as _attrs_field
 
-from ..models.person_response_sex import PersonResponseSex
+from ..models.person_response_sex_type_1 import PersonResponseSexType1
+from ..models.person_response_sex_type_2_type_1 import PersonResponseSexType2Type1
+from ..models.person_response_sex_type_3_type_1 import PersonResponseSexType3Type1
 
 if TYPE_CHECKING:
     from ..models.person_response_films import PersonResponseFilms
@@ -21,7 +23,8 @@ class PersonResponse:
         web_url (Union[None, str]):  Example: 10096.
         name_ru (Union[None, str]):  Example: Винс Гиллиган.
         name_en (Union[None, str]):  Example: Vince Gilligan.
-        sex (PersonResponseSex):  Example: MALE.
+        sex (Union[None, PersonResponseSexType1, PersonResponseSexType2Type1, PersonResponseSexType3Type1]):  Example:
+            MALE.
         poster_url (str):  Example: https://kinopoiskapiunofficial.tech/images/actor_posters/kp/10096.jpg.
         growth (Union[None, str]):  Example: 174.
         birthday (Union[None, str]):  Example: 1965-04-04.
@@ -40,7 +43,7 @@ class PersonResponse:
     web_url: Union[None, str]
     name_ru: Union[None, str]
     name_en: Union[None, str]
-    sex: PersonResponseSex
+    sex: Union[None, PersonResponseSexType1, PersonResponseSexType2Type1, PersonResponseSexType3Type1]
     poster_url: str
     growth: Union[None, str]
     birthday: Union[None, str]
@@ -67,7 +70,15 @@ class PersonResponse:
         name_en: Union[None, str]
         name_en = self.name_en
 
-        sex = self.sex.value
+        sex: Union[None, str]
+        if isinstance(self.sex, PersonResponseSexType1):
+            sex = self.sex.value
+        elif isinstance(self.sex, PersonResponseSexType2Type1):
+            sex = self.sex.value
+        elif isinstance(self.sex, PersonResponseSexType3Type1):
+            sex = self.sex.value
+        else:
+            sex = self.sex
 
         poster_url = self.poster_url
 
@@ -162,7 +173,40 @@ class PersonResponse:
 
         name_en = _parse_name_en(d.pop("nameEn"))
 
-        sex = PersonResponseSex(d.pop("sex"))
+        def _parse_sex(
+            data: object,
+        ) -> Union[None, PersonResponseSexType1, PersonResponseSexType2Type1, PersonResponseSexType3Type1]:
+            if data is None:
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                sex_type_1 = PersonResponseSexType1(data)
+
+                return sex_type_1
+            except:  # noqa: E722
+                pass
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                sex_type_2_type_1 = PersonResponseSexType2Type1(data)
+
+                return sex_type_2_type_1
+            except:  # noqa: E722
+                pass
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                sex_type_3_type_1 = PersonResponseSexType3Type1(data)
+
+                return sex_type_3_type_1
+            except:  # noqa: E722
+                pass
+            return cast(
+                Union[None, PersonResponseSexType1, PersonResponseSexType2Type1, PersonResponseSexType3Type1], data
+            )
+
+        sex = _parse_sex(d.pop("sex"))
 
         poster_url = d.pop("posterUrl")
 

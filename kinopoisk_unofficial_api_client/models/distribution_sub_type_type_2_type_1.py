@@ -1,7 +1,7 @@
 from enum import Enum
 
 
-class DistributionSubType(str, Enum):
+class DistributionSubTypeType2Type1(str, Enum):
     BLURAY = "BLURAY"
     CINEMA = "CINEMA"
     DIGITAL = "DIGITAL"
